@@ -1,0 +1,46 @@
+<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+  <mat-card-title>Edit Post</mat-card-title>
+  <button mat-flat-button fxFlexAlign="auto" (click)="onNoClick()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</mat-card-header>
+
+<mat-divider class="divider-margin"></mat-divider>
+<!-- {{diagnostic}} -->
+<form (ngSubmit)="onSubmit()" id="createPost" #postForm="ngForm">
+
+  <mat-card-header>
+    <div mat-card-avatar class="post-avatar"></div>
+    <mat-card-title>{{post.author.name}}</mat-card-title>
+    <mat-card-subtitle>Public</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>What do you want to talk about?</mat-label>
+      <textarea matInput rows="20" cols="100" [(ngModel)]="post.text" name="text" #postText="ngModel" cdkFocusInitial
+        required>
+    </textarea>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-divider class=""></mat-divider>
+
+  <mat-card-actions fxLayout="row" fxLayoutAlign="start baseline" fxFlexFill>
+
+    <button mat-flat-button>
+      <mat-icon>add_photo_alternate</mat-icon>
+    </button>
+    <button mat-flat-button>
+      <mat-icon>videocam</mat-icon>
+    </button>
+    <button mat-flat-button>
+      <mat-icon>attach_file</mat-icon>
+    </button>
+
+    <button mat-raised-button fxFlexAlign="end" fxFlexOffset="45" color="primary" style="color: aliceblue;"
+      [disabled]="postText.invalid" (click)="onNoClick()">Edit</button>
+
+  </mat-card-actions>
+
+</form>

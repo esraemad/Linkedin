@@ -1,0 +1,75 @@
+<mat-toolbar class="nav">
+
+  <img src="../../assets/images/linkedIn_logo.png" class="nav__img">
+
+
+  <!-- <mat-form-field  class="serach">
+    <mat-label>Serach</mat-label>
+    <input matInput
+    type="search"/>
+  </mat-form-field> -->
+
+  <mat-form-field class="example-form-field serach">
+    <mat-icon matListIcon> search </mat-icon>
+    <input matInput type="text" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+
+
+  <div class="navlink">
+    <li routerLinkActive="active">
+      <a routerLink="/home">
+        <mat-icon matListIcon> home </mat-icon>Home
+      </a>
+    </li>
+
+    <li routerLinkActive="active">
+      <a routerLink="/network">
+        <mat-icon matListIcon> people </mat-icon>My Network
+      </a>
+
+    </li>
+
+    <li routerLinkActive="active">
+      <a style="cursor: pointer;">
+        <mat-icon matListIcon>business_center</mat-icon>Jobs
+      </a>
+    </li>
+
+    <li routerLinkActive="active">
+      <a style="cursor: pointer;">
+        <mat-icon matListIcon>forum</mat-icon>Messging
+      </a>
+
+    </li>
+
+    <li routerLinkActive="active">
+      <a routerLink="/network">
+        <mat-icon matListIcon>notifications_active</mat-icon>Notifications
+      </a>
+
+    </li>
+
+    <li routerLinkActive="active">
+      <a routerLink="/profile"> <img class="imgg" src="../../assets/images/img.jfif"> Me</a>
+    </li>
+
+
+    <li routerLinkActive="active" style="margin-left: 50px;">
+      <a routerLink="/signin"> Sign out</a>
+    </li>
+
+    <!-- <li style="margin-left: 150px;">
+    <a (click)="onLogout()"> Sign out</a>
+  </li> -->
+
+
+
+
+
+  </div>
+
+</mat-toolbar>

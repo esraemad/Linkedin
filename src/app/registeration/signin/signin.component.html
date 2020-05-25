@@ -1,0 +1,50 @@
+
+<div class="">
+
+  <div class="bg">
+    <div class="logo-wrapper"><img src="../../assets/images/1200px-LinkedIn_Logo.svg.png" /></div>
+    <div class="mat-headline">Welcome Back</div>
+    <div class="mat-subheading-1">Don't miss your next opportunity. Sign in to stay updated on your professional world.
+    </div>
+
+
+    <div class="errormsg" *ngIf="error">
+      <p class="hey">{{error}}  <mat-icon matListIcon class="icon"> highlight_off</mat-icon></p>
+    </div>
+
+    <form class="login-form" #authForm="ngForm"  (ngSubmit)="onSubmit(authForm)" >
+      <div class="inputs-wrapper">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email or Phone</mat-label>
+          <input matInput
+          placeholder="example@abc.com"
+          type="email"
+          ngModel
+          name="email"
+          required
+          email
+
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput
+          type="password"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+           />
+        </mat-form-field>
+      </div>
+      <button type="submit" class="btn-wrapper" mat-raised-button>
+        Sigin In
+      </button>
+    </form>
+    <div class="text-center mat-subheading-2 " fxLayout="column" fxLayoutAlign="center center">
+      <div><a href="#" class="">Forgot Password</a></div>
+
+      <div>New to LinkedIn? <a routerLink="/signup"> Join now</a></div>
+    </div>
+  </div>

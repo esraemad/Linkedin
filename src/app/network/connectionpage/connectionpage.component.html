@@ -1,0 +1,42 @@
+<app-nav></app-nav>
+<!-- <h1>{{connectionlist?.length}}</h1>  -->
+
+<div class="bigest" *ngFor="let connection of connectionlist">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+
+        <mat-card-content>
+
+          <br>
+          <div class="content">
+            <img src={{connection.imgUrl}}>
+            <!-- <mat-card-title>Salah</mat-card-title> -->
+            <div class="subcontent">
+              <h5 mat-line dense>{{connection.title}}</h5>
+              <p>{{connection.job}}</p>
+              <a>
+                <mat-icon matListIcon>link</mat-icon> {{connection.mutelfriends}}
+              </a>
+            </div>
+
+          </div>
+        </mat-card-content>
+
+      </div>
+
+      <div class="col-sm-2">
+
+        <br><br><br>
+        <mat-card-actions align="end">
+          <button mat-stroked-button class="accp">Meesage</button>
+        </mat-card-actions>
+
+
+      </div>
+
+
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>

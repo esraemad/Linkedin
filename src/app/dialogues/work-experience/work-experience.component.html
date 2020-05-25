@@ -1,0 +1,107 @@
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div class="mat-headline ">Add experience</div>
+    <div><button mat-flat-button (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+      </button></div>
+  </div>
+  <mat-divider></mat-divider>
+  <!--myform.form.valid && -->
+  <form #myform="ngForm" class="example-form">
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Summary</mat-label>
+        <textarea class="form-control" [(ngModel)]="clientexperience.summary" matInput rows="5" class="text-area"
+          name="summary" #summary="ngModel" [ngClass]="{
+            'is-invalid': myform.submitted && summary.invalid && summary.touched
+          }" required></textarea>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="clientexperience.title" placeholder="" value="" name="joptitle" #joptitle="ngModel"
+        [ngClass]="{
+          'is-invalid': myform.submitted && joptitle.invalid && joptitle.touched
+        }" required />
+    </mat-form-field>
+    <!-- clientexperience.EmploymentType.type -->
+    <mat-label>Employment type </mat-label>
+    <select [(ngModel)]="clientexperience.EmploymentType" name="employmenttype" required>
+      <option *ngFor="let t of worktype" [value]="t.type" [selected]="t.type ===clientexperience.EmploymentType.type">
+        {{t.type}}</option>
+    </select>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Company</mat-label>
+      <input [(ngModel)]="clientexperience.Name" matInput placeholder="" value="" name="companyname"
+        #companyname="ngModel" [ngClass]="{
+          'is-invalid':
+            myform.submitted && companyname.invalid && companyname.touched
+        }" required />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Location</mat-label>
+      <input [(ngModel)]="clientexperience.location" matInput placeholder="" value="" name="location"
+        #location="ngModel" [ngClass]="{
+          'is-invalid': myform.submitted && location.invalid && location.touched
+        }" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Start date</mat-label>
+      <input [(ngModel)]="clientexperience.startDate" matInput [matDatepicker]="picker" name="startdate"
+        #startdate="ngModel" [ngClass]="{
+          'is-invalid':
+            myform.submitted && startdate.invalid && startdate.touched
+        }" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+
+      <div *ngIf="validateStartDate(myform)" class="invalid">
+        invalid start date.
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>End date</mat-label>
+      <input [(ngModel)]="clientexperience.endDate" matInput [matDatepicker]="picker2" name="enddate" #enddate="ngModel"
+        [ngClass]="{
+          'is-invalid': myform.submitted && enddate.invalid && enddate.touched
+        }" required />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+
+      <div *ngIf="validateEndDate(myform)" class="invalid">
+        invalid End date.
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Headline</mat-label>
+      <textarea [(ngModel)]="clientexperience.headLine" matInput rows="3" class="text-area" name="headline"
+        #headline="ngModel" [ngClass]="{
+          'is-invalid': myform.submitted && headline.invalid && headline.touched
+        }" required></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea [(ngModel)]="clientexperience.Description" matInput rows="5" class="text-area" name="desription"
+        #desription="ngModel" [ngClass]="{
+          'is-invalid':
+            myform.submitted && desription.invalid && desription.touched
+        }" required></textarea>
+    </mat-form-field>
+  </form>
+
+  <button *ngIf="editflag==false" type="submit" mat-raised-button class="bg-main-color text-white saveBtn"
+    (click)="onsubmit(myform)">
+    Add</button>
+  <button *ngIf="editflag==true" type="button" mat-raised-button class="bg-main-color text-white saveBtn"
+    (click)="onsave()">
+    save</button>
+  <button *ngIf="deleteflag==true" type="button" mat-raised-button class="bg-main-color text-white saveBtn"
+    (click)="ondelete()">
+    delete</button>
+
+
+</div>

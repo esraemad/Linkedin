@@ -1,0 +1,297 @@
+<mat-card *ngFor="let post of postService.posts" class="example-card" style="width: 450px; margin-bottom: 10px;">
+
+  <mat-card-header fxLayout="row" class="post-header">
+    <div mat-card-avatar class="post-avatar"></div>
+    <div fxFlex="50">
+      <mat-card-title>{{ post.author.name }}</mat-card-title>
+      <mat-card-subtitle>{{ post.author.description }}</mat-card-subtitle>
+      <!-- <mat-card-subtitle>{{1553683912689 | timeago:live}}</mat-card-subtitle> -->
+      <mat-card-subtitle>{{ post.author.timeSinceAuthorPosted }}</mat-card-subtitle>
+      <!-- <mat-card-subtitle>{{ post.calculateTimeSincePosted(post.author.timeSinceAuthorPosted) }} m</mat-card-subtitle> -->
+    </div>
+
+    <button mat-button [matMenuTriggerFor]="menu" aria-label="post menu" fxFlexOffset="20"
+      style="height: 40px; width: 50px;">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog(post)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit post</span>
+      </button>
+      <button mat-menu-item (click)="deletePost(post)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete post</span>
+      </button>
+    </mat-menu>
+
+  </mat-card-header>
+
+  <mat-card-content class="post-content">
+    <p class="post-text">
+      {{ post.text }}
+    </p>
+    <!-- https://via.placeholder.com/480x360 -->
+    <img *ngIf="post.imgUrl" mat-card-image class="post-image" src="{{ post.imgUrl }}" alt="Photo of a Shiba Inu">
+  </mat-card-content>
+
+  <mat-card-content class="post-reactions">
+    <span *ngIf="post.numOfReactions">
+      <mat-icon class="reaction-icon-on-post">thumb_up</mat-icon>
+      <span class="reactions-num-on-post">{{ post.numOfReactions }}</span>
+      <span *ngIf="post.numOfReactions && post.comments.length "> . </span>
+    </span>
+    <span *ngIf="post.comments.length">
+      <span class="comments-num-on-post">{{ post.comments.length }} </span>
+      <span *ngIf="post.comments.length === 1"> Comment</span>
+      <span *ngIf="post.comments.length > 1"> Comments</span>
+    </span>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions class="post-actions">
+    <button mat-button (click)="onReact(post)" [ngClass]="{'reacted-on':reactedOn}">
+      <mat-icon>thumb_up</mat-icon>
+      Like
+    </button>
+    <button mat-button (click)="onCommentBtnClick()">
+      <mat-icon>comment</mat-icon>
+      Comment
+    </button>
+    <button mat-button>
+      <mat-icon>share</mat-icon>
+      Share
+    </button>
+  </mat-card-actions>
+
+  <mat-card-footer class="post-footer">
+    <div fxLayout="column wrap" fxLayoutAlign="start center" fxFill fxLayoutGap="10px">
+
+      <div *ngIf="commentBoxOpened" class="comment-box" fxLayout="row wrap" fxLayoutAlign="start baseline" fxFill
+        fxLayoutGap="10px" style="width: 100%;">
+
+        <div mat-card-avatar class="post-avatar"></div>
+
+        <form (ngSubmit)="onCommentSubmit(post)" #addCommentForm="ngForm">
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+            <mat-label>Add a comment...</mat-label>
+            <textarea matInput placeholder="" ngModel (input)="commentText = $event.target.value" name="comment"
+              #postComment="ngModel" cdkFocusInitial required></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" style="color: aliceblue;" type="submit"
+            [disabled]="postComment.invalid || (postComment.untouched && postComment.pristine)">
+            Post
+          </button>
+        </form>
+        <!-- {{ diagnostic }} -->
+
+      </div>
+
+      <div class="comments-list" style=" width: 90%;">
+
+        <div *ngFor="let comment of post.comments" class="comment" style="margin-bottom: 15px;">
+          <ng-container *ngIf="comment.inEditMode; else elseTemplate">
+
+            <div class="" fxLayout="row wrap" fxLayoutAlign="start baseline" fxFill fxLayoutGap="10px"
+              style="width: 100%;">
+
+              <div mat-card-avatar class="post-avatar"></div>
+
+              <form (ngSubmit)="onCommentEdit(post, comment, addCommentForm)" #addCommentForm="ngForm">
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                  <mat-label>Add a comment...</mat-label>
+                  <textarea matInput placeholder="" [(ngModel)]="comment.text"
+                    (input)="commentText = $event.target.value" name="comment" #postComment="ngModel" cdkFocusInitial
+                    required></textarea>
+                </mat-form-field>
+                <button mat-raised-button color="primary" style="color: aliceblue;" type="submit"
+                  [disabled]="postComment.invalid">
+                  Edit
+                </button>
+              </form>
+              <!-- {{ diagnostic }} -->
+
+            </div>
+
+          </ng-container>
+          <ng-template #elseTemplate>
+            <mat-card class="" style="background-color: #F3F6F8;" fxLayout="column"
+              fxLayoutAlign="space-evenly stretch">
+
+              <div fxLayout="row" fxLayoutAlign="space-between start" fxFill>
+
+                <mat-card-header>
+                  <div mat-card-avatar class="post-avatar"></div>
+                  <mat-card-subtitle>{{ comment.author.name }}</mat-card-subtitle>
+                  <mat-card-subtitle>{{ comment.author.description }}</mat-card-subtitle>
+                </mat-card-header>
+                <button mat-button [matMenuTriggerFor]="commentMenu" aria-label="comment menu" fxFlexOffset="30">
+                  <mat-icon>more_horiz</mat-icon>
+                  <span class="time-since-post">{{ comment.author.timeSinceAuthorPosted }}</span>
+                </button>
+
+                <mat-menu #commentMenu="matMenu">
+                  <button mat-menu-item (click)="switchCommentToEditMode(comment)">
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit comment</span>
+                  </button>
+                  <button mat-menu-item (click)="deleteComment(post, comment)">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete comment</span>
+                  </button>
+                </mat-menu>
+
+              </div>
+
+              <mat-card-content>
+                <p>
+                  {{ comment.text }}
+                </p>
+              </mat-card-content>
+
+            </mat-card>
+
+            <mat-card-content class="comment-actions">
+
+              <span>
+                <button mat-icon-button>
+                  <mat-icon class="reaction-icon-on-post">thumb_up</mat-icon>
+                </button>
+
+                <!-- <span class="reactions-num-on-post">{{ comment.numOfReactions }}</span>Likes -->
+                |
+              </span>
+              <span>
+                <button mat-icon-button (click)="onReplyBtnClick()">
+                  <mat-icon class="reaction-icon-on-post">comment</mat-icon>
+                </button>
+                .
+                <!-- <span class="comments-num-on-post">{{ comment.replies.length }}</span> -->
+              </span>
+
+            </mat-card-content>
+
+          </ng-template>
+
+          <div *ngFor="let reply of comment.replies" class="replies" fxLayout="column">
+
+
+            <ng-container *ngIf="reply.inEditMode; else elseTemplate">
+
+
+              <div class="reply-box" fxLayout="row wrap" fxLayoutAlign="start baseline" fxFill fxLayoutGap="10px"
+                style="width: 100%;">
+
+                <div mat-card-avatar class="post-avatar"></div>
+
+                <form (ngSubmit)="onReplyEdit(post, comment, reply,addReplyForm)" #addReplyForm="ngForm">
+                  <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                    <mat-label>Add a reply...</mat-label>
+                    <textarea matInput placeholder="" [(ngModel)]="reply.text" (input)="replyText = $event.target.value"
+                      name="reply" #commentReply="ngModel" cdkFocusInitial required></textarea>
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" style="color: aliceblue;" type="submit"
+                    [disabled]="commentReply.invalid">
+                    Edit
+                  </button>
+                </form>
+                <!-- {{ diagnostic }} -->
+
+              </div>
+
+            </ng-container>
+            <ng-template #elseTemplate>
+              <div class="reply" style="margin-bottom: 10px;" fxLayout="column">
+                <mat-card class="" style="background-color: #F3F6F8; width: 100%;" fxLayout="column"
+                  fxLayoutAlign="space-evenly stretch">
+                  <!--15-->
+
+                  <div fxLayout="row" fxLayoutAlign="space-between start" fxFill>
+                    <mat-card-header>
+                      <div mat-card-avatar class="post-avatar"></div>
+                      <mat-card-subtitle>{{ reply.author.name }}</mat-card-subtitle>
+                      <mat-card-subtitle>{{ reply.author.description }}</mat-card-subtitle>
+                    </mat-card-header>
+
+                    <button mat-button [matMenuTriggerFor]="replyMenu" aria-label="reply menu" fxFlexOffset="20"
+                      style="">
+                      <mat-icon>more_horiz</mat-icon>
+                      <span class="time-since-post">{{ reply.author.timeSinceAuthorPosted }}</span>
+                    </button>
+
+                    <mat-menu #replyMenu="matMenu">
+                      <button mat-menu-item (click)="switchReplyToEditMode(reply)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit reply</span>
+                      </button>
+                      <button mat-menu-item (click)="deleteReply(post, comment, reply)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete reply</span>
+                      </button>
+                    </mat-menu>
+
+                  </div>
+
+                  <mat-card-content>
+                    <p>
+                      {{ reply.text }}
+                    </p>
+                  </mat-card-content>
+
+                </mat-card>
+                <mat-card-content class="reply-actions">
+
+                  <span>
+                    <button mat-icon-button>
+                      <mat-icon class="reaction-icon-on-post">thumb_up</mat-icon>
+                    </button>
+
+                    <!-- <span class="reactions-num-on-post">{{ comment.numOfReactions }}</span>Likes -->
+                    |
+                  </span>
+                  <span>
+                    <button mat-icon-button (click)="onReplyBtnClick()">
+                      <mat-icon class="reaction-icon-on-post">comment</mat-icon>
+                    </button>
+                    .
+                    <!-- <span class="comments-num-on-post">{{ comment.replies.length }}</span> -->
+                  </span>
+
+                </mat-card-content>
+              </div>
+            </ng-template>
+
+          </div>
+
+
+          <div *ngIf="replyBoxOpened" class="reply-box" fxLayout="row wrap" fxLayoutAlign="start baseline" fxFill
+            fxLayoutGap="10px" style="width: 100%;">
+
+            <div mat-card-avatar class="post-avatar"></div>
+
+            <form (ngSubmit)="onReplySubmit(post, comment)" #addReplyForm="ngForm">
+
+              <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                <mat-label>Add a reply...</mat-label>
+                <textarea matInput placeholder="" ngModel (input)="replyText = $event.target.value" name="reply"
+                  #commentReply="ngModel" cdkFocusInitial required></textarea>
+              </mat-form-field>
+              <button mat-raised-button color="primary" style="color: aliceblue;" type="submit"
+                [disabled]="commentReply.invalid || (commentReply.untouched && commentReply.pristine)">
+                Post
+              </button>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </mat-card-footer>
+
+
+</mat-card>

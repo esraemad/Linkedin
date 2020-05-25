@@ -1,0 +1,15 @@
+<div class=test>
+  <mat-card>
+    <p mat-line>Invitations</p>
+    <ng-container *ngFor="let invitationitem of invitaions">
+      <app-invitaton-item *ngIf="!invitationitem.responded" [invitaion]="invitationitem"
+      (itemAdd)="onOneItemAdded($event)"  [ngClass]="{'hideInvitation': invitationitem.responded}">
+    </app-invitaton-item>
+    </ng-container>
+<!--
+    <app-invitaton-item *ngFor="let invitationitem of invitaions" [invitaion]="invitationitem"
+      (itemAdd)="onOneItemAdded($event)"  [ngClass]="{'hideInvitation': invitationitem.responded}">
+    </app-invitaton-item> -->
+  </mat-card>
+
+</div>

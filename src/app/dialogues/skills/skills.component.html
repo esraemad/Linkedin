@@ -1,0 +1,26 @@
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div class="mat-headline ">Add skill</div>
+    <div><button mat-flat-button (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+      </button></div>
+  </div>
+  <mat-divider></mat-divider>
+  <br>
+
+  <form class="example-form" #skillsForm="ngForm">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Skill</mat-label>
+      <input #skillTag (keyup.enter)="onSave(skillTag)" matInput placeholder="" value="" name="name"
+        [(ngModel)]="skill.name" #name="ngModel" required>
+    </mat-form-field>
+
+  </form>
+
+  <div class="skill-tag">
+    <span class="tag" *ngFor="let s of skillsArr">{{s.name}}</span>
+  </div>
+  <button (click)="onSubmit(skillTag)" class="bg-main-color text-white saveBtn" mat-raised-button
+    [disabled]="!skillsForm.form.valid">Save</button>
+</div>

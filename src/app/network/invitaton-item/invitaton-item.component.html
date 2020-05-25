@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-sm-8">
+
+    <mat-card-content>
+
+      <br>
+      <div class="content">
+        <img src={{invitaion.imgUrl}}>
+        <!-- <mat-card-title>Salah</mat-card-title> -->
+        <div class="subcontent">
+          <h5 mat-line dense>{{invitaion.title}}</h5>
+          <p>{{invitaion.job}}</p>
+          <a>
+            <mat-icon matListIcon>link</mat-icon> {{invitaion.mutelfriends}}
+          </a>
+        </div>
+
+      </div>
+    </mat-card-content>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    <br><br><br>
+    <mat-card-actions align="end">
+      <button mat-button (click)="onItemIgnore()">Ignore</button>
+      <button mat-stroked-button class="accp" (click)="onItemAdd()">Accept</button>
+    </mat-card-actions>
+
+
+  </div>
+
+</div>
+<mat-divider></mat-divider>

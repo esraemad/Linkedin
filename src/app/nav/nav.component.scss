@@ -1,0 +1,75 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+.nav {
+  background-color: #283e4a;
+  margin-bottom: 50px;
+
+  &__img {
+    width: 50px;
+  }
+}
+
+
+li {
+  list-style: none;
+  display: inline-block;
+  color: #fff;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+
+}
+
+
+.navlink {
+  margin-left: 100px;
+}
+
+.serach {
+  color: #fff;
+  margin-left: 100px;
+  font-size: 10px;
+
+}
+
+.example-form-field {
+  height: 34px !important;
+  //background-color: #e1e9ee !important;
+  // border-top: 1px solid #eee;
+  // border-left: 1px solid #eee;
+  // border-right: 1px solid #eee;
+  //background-color: #eee;
+}
+
+.mat-icon {
+  font-size: 20px;
+
+}
+
+.imgg {
+  border-radius: 50%;
+  width: 30px;
+
+}

@@ -1,0 +1,58 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class=test>
+        <mat-card>
+
+          <mat-card-content>
+
+            <p mat-line>Manage my network</p>
+
+            <app-connections *ngFor="let connectionitem of connections" [connection]="connectionitem"></app-connections>
+            <!------------>
+
+            <app-sidebar> </app-sidebar>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+
+    <div class="col-sm-8">
+      <app-invitation-list (oneItemAdded)="addToconnectionlist($event)"></app-invitation-list>
+
+
+      <!------------------------------------------>
+
+      <div class=test>
+        <mat-card>
+
+          <mat-card-content>
+            <p mat-line>Industry leaders in Egypt you may know</p>
+            <div class="row">
+              <div *ngFor="let mayknowItem of mayknows" class="col-sm-3">
+                <app-mayknow-item [mayknow]="mayknowItem"></app-mayknow-item>
+              </div>
+
+              <!-- <app-mayknow-list></app-mayknow-list> -->
+
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+
+      <!------------------------------------------- -->
+
+
+    </div>
+
+
+  </div>
+
+  <!-- <app-connectionpage></app-connectionpage> -->
+</div>

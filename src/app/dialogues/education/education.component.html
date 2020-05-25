@@ -1,0 +1,80 @@
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div class="mat-headline ">Add education</div>
+    <div><button mat-flat-button (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+      </button></div>
+  </div>
+  <mat-divider></mat-divider>
+
+
+  <form class="example-form" #eduForm="ngForm">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>School</mat-label>
+      <input required matInput placeholder="" value="" name="school" [(ngModel)]="education.school" #school="ngModel">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Degree</mat-label>
+      <input required matInput placeholder="" value="" name="degree" [(ngModel)]="education.degree" #degree="ngModel">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Field of study</mat-label>
+      <input required matInput placeholder="" value="" name="field" [(ngModel)]="education.field" #field="ngModel">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Start year</mat-label>
+      <mat-select required [(ngModel)]="education.start" #start="ngModel" name="start">
+        <mat-option *ngFor="let y of years" [value]="y">
+          {{y}}
+        </mat-option>
+      </mat-select>
+      <!-- <input matInput [matDatepicker]="pickerstart">
+      <mat-datepicker-toggle matSuffix [for]="pickerstart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerstart startView="multi-year"></mat-datepicker> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>End year</mat-label>
+      <mat-select required [(ngModel)]="education.end" #end="ngModel" name="end">
+        <mat-option *ngFor="let y of years" [value]="y">
+          {{y}}
+        </mat-option>
+
+      </mat-select>
+      <small [hidden]="!checkDate" class="red">Not valid date</small>
+      <!-- <input matInput [matDatepicker]="pickerend">
+      <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
+      <mat-datepicker #pickerend></mat-datepicker> -->
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Grade</mat-label>
+      <input required matInput placeholder="" value="" name="grade" [(ngModel)]="education.grade" #grade="ngModel">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Activities & societies</mat-label>
+      <textarea matInput rows="3" class="text-area" name="activity" [(ngModel)]="education.activity"
+        #activity="ngModel"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="5" class="text-area" name="desc" [(ngModel)]="education.description"
+        #desc="ngModel"></textarea>
+    </mat-form-field>
+    <div>
+      <div class="mat-subheading-2">Media</div>
+      <p>Add or link to external documents, photos, sites, videos, and presentations.</p>
+      <div fxLayout="row" fxLayoutAlign="space-between start">
+        <button mat-raised-button class=" text-white bg-main-color btn">Upload</button>
+        <button mat-raised-button class="bg-main-color text-white btn">Link</button>
+      </div>
+    </div>
+  </form>
+
+  <button (click)="onSubmit(eduForm)" mat-raised-button class="bg-main-color text-white saveBtn"
+    [disabled]="!eduForm.form.valid">Save</button>
+</div>

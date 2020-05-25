@@ -1,0 +1,116 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width:100%;
+}
+
+.bg {
+
+  background: linear-gradient(-45deg, #0073b1, #0c8996);
+  background-color: #0378aa;
+  //  height: 100vh;
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5% 2%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-form {
+  //   border: 1px solid white;
+  background-color: rgb(226, 225, 225);
+  height: 400px;
+  margin: auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputs-wrapper {
+  padding: 2% 3%;
+  //   justify-content: center;
+}
+
+mat-form-field {
+  margin: auto;
+  background: white;
+  /* border-radius: 8px; */
+  border: 1px solid black;
+  margin-bottom: 2%;
+  padding: 6px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 98%;
+  margin: 2% auto;
+
+}
+
+.btn-wrapper {
+  padding: 2% 3%;
+  width: 95%;
+  margin: 5% auto;
+}
+
+.mat-caption {
+  color: grey;
+  padding: 2%;
+}
+
+.mat-headline {
+  color: #fff;
+  // padding: 2%;
+  text-align: center;
+}
+
+button {
+  background-color: #0073b1;
+  color: white;
+}
+
+.logo-wrapper {
+
+  margin: auto;
+
+  img {
+    width: 180px;
+  }
+
+  padding-bottom: 3%;
+}
+
+.errormsg
+{
+  background-color: #D11124;
+  color: #fff;
+  text-align: center;
+  width: 402px;
+  margin: auto;
+  height: 50px;
+  line-height: 50px;
+}
+.donemsg
+{
+  background-color: green;
+  color: #fff;
+  text-align: center;
+  width: 402px;
+  margin: auto;
+  height: 50px;
+  line-height: 50px;
+}
+

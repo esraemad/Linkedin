@@ -1,0 +1,82 @@
+@import '~material-icons/css/material-icons.scss';
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-actions,
+.mat-card-subtitle,
+.mat-card-content {
+  margin-bottom: 0;
+  /* margin-bottom: 16px; */
+}
+
+a {
+  text-decoration: none;
+  color: #0073b1;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+mat-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  // vertical-align: middle;
+  line-height: 50%;
+}
+
+.divider-margin {
+  margin: 10px 0;
+}
+
+.post-avatar {
+  background-image: url('https://randomuser.me/api/portraits/men/46.jpg');
+  background-size: cover;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.post-image {
+  cursor: pointer;
+}
+
+.reaction-icon-on-post {
+  font-size: 20px;
+  // color: #0073b1;
+  color: rgba(0, 0, 0, .6);
+  margin-right: 5px;
+}
+
+.comment-box {
+  padding: 4px 16px 8px;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+// mat-grid-tile {
+//   margin: 0 20px;
+// }
+
+// mat-grid-list {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
+
+main {
+  width: 1128px;
+  box-sizing: content-box;
+  padding: 0 30px;
+  display: block;
+  margin: auto;
+  position: relative;
+}

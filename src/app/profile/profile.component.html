@@ -1,0 +1,367 @@
+<app-nav></app-nav>
+
+<div class="container margin-md" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="10px">
+  <div class="item item-2" fxFlex="70">
+    <mat-card class="maincard">
+      <img mat-card-image src="../../assets/images/wimg.jfif" class="img" />
+      <img src="../../assets/images/img.jfif" class=" walimg walimg__main" />
+      <mat-card-content class="card-content">
+        <div class="card">
+          <div class="personaldata">
+            <h2>Name</h2>
+            <h3> Description</h3>
+            <span>country. </span>
+            <span class=" h4 maincolor">connections. </span>
+            <span class="h4 maincolor"> Contact info</span>
+
+          </div>
+          <div class="experience">
+            <div class="buttons">
+
+              <button [matMenuTriggerFor]="menu" mat-raised-button class="btn">Add profile section
+                <mat-icon>arrow_drop_down</mat-icon>
+              </button>
+
+
+              <button mat-stroked-button [matMenuTriggerFor]="menu2">More
+
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+
+              <a>
+                <mat-icon class="penicon maincolor">create</mat-icon>
+              </a>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="intro">Intro</button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item [matMenuTriggerFor]="about">About</button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item [matMenuTriggerFor]="featured">Featured</button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item [matMenuTriggerFor]="background">Background</button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item [matMenuTriggerFor]="skills">Skills</button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item [matMenuTriggerFor]="accomplishments">Accomplishments</button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item [matMenuTriggerFor]="additional">Additional</button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item [matMenuTriggerFor]="supported">Supported languages</button>
+                <mat-divider></mat-divider>
+
+
+              </mat-menu>
+
+              <mat-menu #intro="matMenu">
+
+              </mat-menu>
+
+              <mat-menu #about="matMenu">
+
+                <button mat-menu-item (click)="openDialog('Summary')"> Summary <mat-icon>add_circle_outline
+                  </mat-icon> </button>
+              </mat-menu>
+
+              <mat-menu #featured="matMenu">
+                <button mat-menu-item (click)="openDialog('PostCreate')">Posts <mat-icon>add_circle_outline</mat-icon>
+                </button>
+                <button mat-menu-item>Articles <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item (click)="openDialog('Links')">Links <mat-icon>add_circle_outline
+                  </mat-icon></button>
+
+                <button mat-menu-item (click)="openMedia()">Media <mat-icon>add_circle_outline</mat-icon>
+                </button>
+              </mat-menu>
+              <mat-menu #background="matMenu">
+                <button mat-menu-item (click)="openDialog('WorkExperience')">Work experience <mat-icon>
+                    add_circle_outline</mat-icon></button>
+                <button mat-menu-item (click)="openDialog('Education')">Education <mat-icon>add_circle_outline
+                  </mat-icon></button>
+                <button mat-menu-item>License & Certification <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Volunteer experience <mat-icon>add_circle_outline</mat-icon></button>
+              </mat-menu>
+
+              <mat-menu #skills="matMenu">
+                <button mat-menu-item (click)="openDialog('Skills')">Skills <mat-icon>add_circle_outline
+                  </mat-icon></button>
+              </mat-menu>
+
+              <mat-menu #accomplishments="matMenu">
+                <button mat-menu-item>publications <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Patents <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Courses <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Projects <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Honors & Awards <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Test scores <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Languages <mat-icon>add_circle_outline</mat-icon></button>
+                <button mat-menu-item>Organizations <mat-icon>add_circle_outline</mat-icon></button>
+              </mat-menu>
+
+              <mat-menu #additional="matMenu">
+                <button mat-menu-item (click)="openDialog('RequestRecommendation')"> Request a recommendation
+                  <mat-icon>add_circle_outline</mat-icon></button>
+
+
+
+              </mat-menu>
+              <mat-menu #supported="matMenu">
+                <button (click)="openDialog('Language')" mat-menu-item>Supported languages <mat-icon>
+                    add_circle_outline</mat-icon></button>
+              </mat-menu>
+
+
+              <mat-menu #menu2="matMenu">
+                <mat-list>
+                  <mat-list-item>share profile via msg</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>Save to pdf</mat-list-item>
+                  <mat-divider></mat-divider>
+
+                </mat-list>
+              </mat-menu>
+            </div>
+            <div class="exdata margin-top-sm">
+              <img src="../../assets/images/img.jfif" class="eximg walimg" />
+              <a>your Experience</a>
+            </div>
+          </div>
+
+
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="showrecruiters">
+          <p> <strong>Show recruiters you’re open</strong> to job opportunities—you control who sees this.</p>
+          <a class="maincolor">get started</a>
+        </div>
+      </mat-card-footer>
+
+    </mat-card>
+
+
+  </div>
+  <div class="item item-3" fxFlex="30">
+    <mat-list>
+      <mat-list-item>Edit puplic profile &url
+        <mat-icon class="help">help_outline</mat-icon>
+      </mat-list-item>
+      <!-- <mat-divider></mat-divider> -->
+      <hr class="mydivider">
+      <mat-list-item>Add profile in another language
+        <mat-icon class="help">help_outline</mat-icon>
+      </mat-list-item>
+      <hr class="mydivider">
+      <!-- <mat-divider></mat-divider> -->
+    </mat-list>
+  </div>
+</div>
+
+<div class="container margin-md " fxLayout fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+  <div class="item item-2" fxFlex="70">
+    <mat-card>
+
+      <mat-card-title class="spacer">About <mat-icon class="penicon maincolor pointer"
+          (click)="editSummaryDialog('Summary')">create</mat-icon>
+      </mat-card-title>
+
+      <mat-card-content class="spacer">{{summ?.summary}}</mat-card-content>
+    </mat-card>
+  </div>
+  <div class="item item-1" fxFlex="30">
+  </div>
+</div>
+
+<div class="container margin-md" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+  <div class="item item-2" fxFlex="70">
+
+    <mat-card>
+      <mat-card-title>
+        Your Dashboard
+      </mat-card-title>
+      <mat-card-subtitle>
+        Private to you
+      </mat-card-subtitle>
+      <mat-card-content class="spacer exdata fullWidth">
+
+        <mat-button-toggle-group name="fontStyle " class="fullWidth" aria-label="Font Style">
+          <mat-button-toggle value="bold" class="equalizeWidth">
+            <h2 class="maincolor">25</h2>
+            <span>Who viewed your profile</span>
+          </mat-button-toggle>
+          <mat-button-toggle value="italic" class="equalizeWidth">
+            <h2 class="maincolor">0</h2>
+            <span>Article views</span>
+          </mat-button-toggle>
+          <mat-button-toggle value="underline" class="equalizeWidth">
+            <h2 class="maincolor">2</h2>
+            <span>Search appearances</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <div></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="item item-1" fxFlex="30">
+  </div>
+</div>
+
+<div class="container margin-md" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+  <div class="item item-2" fxFlex="70">
+    <mat-card>
+      <mat-card-title>Experience</mat-card-title>
+      <div class="Experiencescontainer">
+        <div class="Aboutexperience">
+          <mat-list *ngFor="let workplace of workplaces">
+
+            <div class="experienceandicon margin-sm">
+              <img class="walimg walimg--sm" src="../../assets/images/job.jfif">
+
+
+              <mat-list-item>
+                <h2>{{workplace.title}}</h2>
+              </mat-list-item>
+            </div>
+            <div class="experienceandicon">
+
+              <mat-list-item>
+                <h3>{{workplace.Name}}</h3>
+              </mat-list-item>
+              <mat-icon class="penicon maincolor pointer" (click)="editDialog('WorkExperience',workplace);">create
+              </mat-icon>
+            </div>
+
+
+            <mat-list-item>
+              <h3>{{workplace.location}}</h3>
+            </mat-list-item>
+            <mat-list-item>
+              <h4 class="datecolor">{{workplace.startDate| date }} / {{workplace.endDate| date}}</h4>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+
+
+        </div>
+
+        <div class="editIcons pointer">
+          <mat-icon (click)="openDialog('WorkExperience')">add</mat-icon>
+
+
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="item item-1" fxFlex="30">
+  </div>
+</div>
+
+<div class="container margin-md" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+  <div class="item item-2" fxFlex="70">
+
+    <mat-card>
+      <mat-card-title>Education</mat-card-title>
+      <div class="educationContainer">
+        <div class="Education">
+          <mat-list *ngFor="let e of allEducations">
+            <div class="AboutEducation margin-sm">
+              <img class="walimg walimg--sm" src="../../assets/images/Ain_Shams_logo.png">
+
+              <div class="educationandicon">
+
+                <mat-list-item>
+                  <h2><span>{{e.degree}} </span> of {{e.school}}</h2>
+                </mat-list-item>
+                <mat-icon (click)="editEducationDialog('Education',e)" class="penicon maincolor pointer">create
+                </mat-icon>
+              </div>
+            </div>
+            <mat-list-item>
+              <h3>Field: {{e.field}}</h3>
+              <h3>Grade: {{e.grade}}</h3>
+            </mat-list-item>
+            <mat-list-item>
+              <h4 class="datecolor">from: {{e.start}} <span> </span></h4>
+              <h4 class="datecolor"> to: {{e.end}} </h4>
+
+
+            </mat-list-item>
+            <mat-list-item>
+              <p>Activities: {{e.activity}}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>Description: {{e.description}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+          </mat-list>
+        </div>
+        <div class="editIcons">
+          <mat-icon class="pointer" (click)="openDialog('Education')">add</mat-icon>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="item item-1" fxFlex="30">
+  </div>
+
+</div>
+
+<div class="container margin-md " fxLayout fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+  <div class="item item-2" fxFlex="70">
+    <mat-card>
+      <mat-card-title>Skills & Endorsements
+        <!-- <h4>Add a new skill
+          <mat-icon class="penicon maincolor pointer" (click)="openDialog('Skills')">create</mat-icon>
+        </h4> -->
+      </mat-card-title>
+      <div class="skillsContainer">
+
+        <div class="skills">
+          <mat-card-content>
+
+            <mat-list>
+              <!-- <mat-list-item>
+                <h3>{{s}}
+                  <mat-icon class="penicon maincolor pointer" (click)="editSkillDialog('Skills',s)">edit</mat-icon>
+                  <mat-icon class="penicon maincolor pointer" (click)="onDeleteSkill(s)">delete</mat-icon>
+                </h3>
+
+              </mat-list-item> -->
+
+              <!-- <mat-list-item>
+                <h4><strong>someone name</strong> has endrosed you</h4>
+              </mat-list-item> -->
+              <mat-form-field class="example-chip-list">
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let s of skillsArr" [selectable]="selectable" [removable]="removable"
+                    (removed)="onDeleteSkill(s)">
+                    {{s}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <!-- <input placeholder="New fruit..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)"> -->
+                </mat-chip-list>
+              </mat-form-field>
+              <mat-divider></mat-divider>
+            </mat-list>
+          </mat-card-content>
+        </div>
+        <div class="editIcons">
+          <mat-icon class="pointer" (click)="openDialog('Skills')">add</mat-icon>
+        </div>
+      </div>
+
+    </mat-card>
+  </div>
+  <div class="item item-3" fxFlex="30"></div>
+
+
+</div>

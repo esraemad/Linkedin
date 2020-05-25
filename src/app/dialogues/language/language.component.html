@@ -1,0 +1,15 @@
+<div>
+  <div class="mat-headline ">Create your profile in another language</div>
+  <div class="example-container">
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Language of new profile <span class="main-color">*</span></mat-label>
+        <mat-select>
+          <mat-option *ngFor="let lang of languages" value="option">{{lang}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <button mat-raised-button class="bg-main-color text-white">Add</button>
+</div>

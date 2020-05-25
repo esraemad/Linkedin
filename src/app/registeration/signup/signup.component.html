@@ -1,0 +1,67 @@
+
+<div class="">
+  <div class="bg">
+
+    <div class="logo-wrapper"><img src="../../assets/images/linkedinWhite.png" /></div>
+    <div class="mat-headline">Make the most of your professional life</div>
+
+    <div class="errormsg" *ngIf="error">
+      <p>{{error}}  <mat-icon matListIcon class="icon"> highlight_off</mat-icon></p>
+    </div>
+    <!-- <ng-template #elseBlock>
+      <div class="donemsg">
+      <p>{{done}} <mat-icon matListIcon class="icon">check_circle_outline</mat-icon></p>
+    </div>
+    </ng-template> -->
+
+    <div class="donemsg" *ngIf="done">
+      <p>{{done}} <mat-icon matListIcon class="icon">check_circle_outline</mat-icon></p>
+    </div>
+
+    <form class="login-form" #authForm="ngForm"  (ngSubmit)="onSubmit(authForm)">
+      <div class="inputs-wrapper">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email or Phone</mat-label>
+        <input matInput
+        placeholder="example@abc.com"
+         type="email"
+         ngModel
+         name="email"
+         required
+         email
+         />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+        <input matInput
+         type="password"
+         ngModel
+         name="password"
+         required
+         minlength="6"
+          />
+        </mat-form-field>
+
+      </div>
+
+      <div class="mat-caption">
+        By clicking Agree & Join, you agree to the LinkedIn User Agreement,
+        Privacy Policy, and Cookie Policy.
+      </div>
+
+      <!-- [disabled]="!authForm.valid" -->
+      <button
+      type="submit"
+      class="btn-wrapper"
+       mat-raised-button
+      >
+        Agree & Join
+      </button>
+
+      <div class="text-center mat-subheading-2 " fxLayout="column" fxLayoutAlign="center center">
+        <div>Already on LinkedIn? <a routerLink="/signin"> Sign in</a></div>
+      </div>
+    </form>
+  </div>
+

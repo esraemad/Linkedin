@@ -1,0 +1,18 @@
+.mat-form-field {
+  max-width: 500px;
+  min-width: 100%;
+}
+
+.cdk-overlay-pane {
+  max-height: 500px !important;
+  overflow-y: scroll;
+}
+
+.mat-dialog-container {
+  height: 400px !important;
+  max-height: 500px !important;
+}
+
+.invalid{
+  color:red;
+}

@@ -1,0 +1,146 @@
+<mat-card-footer>
+  <div fxLayout="column wrap" fxLayoutAlign="start center" fxFill fxLayoutGap="10px">
+
+    <div class="comment-box" fxLayout="row wrap" fxLayoutAlign="start baseline" fxFill fxLayoutGap="10px"
+      style="width: 100%;">
+
+      <div mat-card-avatar class="post-avatar"></div>
+      <form class="example-form">
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+          <mat-label>Add a comment...</mat-label>
+          <textarea matInput placeholder=""></textarea>
+        </mat-form-field>
+
+      </form>
+      <button mat-raised-button color="primary" style="color: aliceblue;">Post</button>
+
+    </div>
+
+    <div class="comments-list" style=" width: 90%;">
+
+      <div class="comment" style="margin-bottom: 10px;">
+        <mat-card class="" style="background-color: #F3F6F8;margin-bottom: 10px;">
+          <button mat-button style="margin-left: 85%;">
+            <span class="time-since-post">5d</span>
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+          <mat-card-header>
+            <div mat-card-avatar class="post-avatar"></div>
+            <mat-card-subtitle>Shiba Inu</mat-card-subtitle>
+            <mat-card-subtitle>Web developer</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
+              Japan.
+            </p>
+          </mat-card-content>
+          <mat-card-content>
+
+            <span>
+              <mat-icon class="reaction-icon-on-post">thumb_up</mat-icon>
+              .
+              <span class="reactions-num-on-post">5 </span>Likes
+              |
+            </span>
+            <span>
+              <mat-icon class="reaction-icon-on-post">comment</mat-icon>
+              .
+              <span class="comments-num-on-post">1 </span>
+              Reply
+            </span>
+
+          </mat-card-content>
+        </mat-card>
+        <div class="replies">
+          <div class="reply" style="margin-bottom: 10px;">
+            <mat-card class="" style="background-color: #F3F6F8; width: 80%;" fxFlexOffset="15">
+              <button mat-button style="margin-left: 85%;">
+                <span class="time-since-post">5d</span>
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-card-header>
+                <div mat-card-avatar class="post-avatar"></div>
+                <mat-card-subtitle>Shiba Inu</mat-card-subtitle>
+                <mat-card-subtitle>Web developer</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  The Shiba Inu is the smallest of the six original and distinct.
+                </p>
+              </mat-card-content>
+              <mat-card-content>
+
+                <span>
+                  <mat-icon class="reaction-icon-on-post">thumb_up</mat-icon>
+                  .
+                  <span class="reactions-num-on-post">5 </span>Likes
+                  |
+                </span>
+                <span>
+                  <mat-icon class="reaction-icon-on-post">comment</mat-icon>
+                  .
+                  <span class="comments-num-on-post">1 </span>
+                  Reply
+                </span>
+
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="reply" style="margin-bottom: 10px;">
+            <mat-card class="" style="background-color: #F3F6F8; width: 80%;" fxFlexOffset="15">
+              <button mat-button style="margin-left: 85%;">
+                <span class="time-since-post">5d</span>
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-card-header>
+                <div mat-card-avatar class="post-avatar"></div>
+                <mat-card-subtitle>Shiba Inu</mat-card-subtitle>
+                <mat-card-subtitle>Web developer</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  The Shiba Inu is the smallest.
+                </p>
+              </mat-card-content>
+              <mat-card-content>
+
+                <span>
+                  <mat-icon class="reaction-icon-on-post">thumb_up</mat-icon>
+                  .
+                  <span class="reactions-num-on-post">5 </span>Likes
+                  |
+                </span>
+                <span>
+                  <mat-icon class="reaction-icon-on-post">comment</mat-icon>
+                  .
+                  <span class="comments-num-on-post">1 </span>
+                  Reply
+                </span>
+
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="comment-box" fxLayout="row wrap" fxLayoutAlign="start baseline" fxFill fxLayoutGap="10px"
+            style="width: 100%;">
+
+            <div mat-card-avatar class="post-avatar"></div>
+            <form class="example-form">
+
+              <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                <mat-label>Add a reply...</mat-label>
+                <textarea matInput placeholder=""></textarea>
+              </mat-form-field>
+
+            </form>
+            <button mat-raised-button color="primary" style="color: aliceblue;">Reply</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</mat-card-footer>
